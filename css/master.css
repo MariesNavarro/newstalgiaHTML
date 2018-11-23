@@ -1,0 +1,76 @@
+/*
+Theme: Newstalgia
+Version: 1
+Author: MariesNavarro
+23 de Noviembre del 2018
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike,
+sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+{margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block; }
+ol, ul {list-style: none; }
+#s{ display: none; }
+* {margin: 0; padding: 0; box-sizing: border-box; }
+* a {cursor: pointer; text-decoration: none; }
+* i {font-style: italic; }
+.trans5 {-webkit-transition: all 0.5s ease-out; -moz-transition: all 0.5s ease-out; -ms-transition: all 0.5s ease-out; -o-transition: all 0.5s ease-out; transition: all 0.5s ease-out; }
+.flexDisplay{display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
+.dislplayNone{ display:none }
+body{
+  background: #fff;
+  height: 200vh;
+}
+/* @font-face { font-family: 'Sofia Black'; src: url('../fonts/sfp-black.eot'); src: url('../fonts/sfp-black?#iefix') format('embedded-opentype'), url('../fonts/sfp-black.woff2') format('woff2'), url('../fonts/sfp-black.woff') format('woff'), url('../fonts/sfp-black.ttf') format('truetype'); font-weight: bold; font-style: normal; } */
+#loading{
+  position: absolute;
+  top: 100vh;
+  width: 100vw;
+  min-width: 300px;
+  height: 100vh;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  background: red;
+}
+#main{
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  min-width: 300px;
+  height: 100vh;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+.frameWr{
+  position: relative;
+  width: 70vw;
+  height: 70vh;
+  overflow: hidden;
+  border:1px solid red;
+}
+.frame{
+  border:1px solid blue;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
