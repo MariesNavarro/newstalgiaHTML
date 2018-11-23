@@ -64,12 +64,15 @@ function loadSeq(len, arr, url, ext, div){
 //On Mousemove
 function sliderFrames(e){
   var wr = __('.frameWr');
-  // for (var i = 0; i < wr.length; i++) {
-  //   if(isMobile){
-  //     wr[i].addEventListener("touchstart", );
-  //   } else {
-  //     wr[i].addEventListener("mousemove", );
-  //   }
-  // }//for
+  for (var i = 0; i < wr.length; i++) {
+    if(isMobile){
+      wr[i].addEventListener("touchstart", moveMouse);
+    } else {
+      wr[i].addEventListener("mousemove", moveMouse);
+    }
+  }//for
+  function moveMouse(e){
+    console.log(e);
+  }
 };
 sliderFrames();
