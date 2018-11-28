@@ -35,11 +35,49 @@ Author: MariesNavarro
   </head>
   <body>
     <div id="loading" class="flexDisplay">
-      <div id="seqDos" class="frameWr" ></div>
+      <div id="seqDos" class="frameWr seq2" ></div>
     </div>
     <div id="main" class="flexDisplay">
-      <div id="seqUno" class="frameWr" data-array="urlSeq1"></div>
+      <div id="seqUno" class="seq1 frameWr"></div>
     </div>
-  <script src="js/app.js" charset="utf-8"></script>
+  <!-- <script src="js/app.js" charset="utf-8"></script> -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" type='text/javascript'></script>
+<script src='https://unpkg.com/spritespin@4.0.3/release/spritespin.js' type='text/javascript'></script>
+  <script type='text/javascript'>
+  $(function(){
+    $('.seq1').spritespin({
+      source: SpriteSpin.sourceArray('/img/seq18/cap-{frame}.png', {
+      frame: [0,17],
+      digits: 1
+      }),
+      width: 1200,
+      height: 675,
+      sense: 1,
+      animate: false,
+      responsive: true,
+      plugins: [
+      '360',
+      'move'
+    ]
+      });
+
+
+      $('.seq2').spritespin({
+        source: SpriteSpin.sourceArray('/img/seq182/cap-{frame}.png', {
+        frame: [0,17],
+        digits: 1
+        }),
+        width: 1200,
+        height: 675,
+        sense: 1,
+        animate: false,
+        responsive: true,
+        plugins: [
+        '360',
+        'move'
+      ]
+        });
+    });
+  </script>
   </body>
 </html>
