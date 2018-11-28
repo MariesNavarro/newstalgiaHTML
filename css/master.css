@@ -18,29 +18,11 @@ ol, ul {list-style: none; }
 .flexDisplay{display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
 .dislplayNone{ display:none }
 body{
-  background: #fff;
-  height: 200vh;
+  background: #000;
+  height: 100vh;
 }
 /* @font-face { font-family: 'Sofia Black'; src: url('../fonts/sfp-black.eot'); src: url('../fonts/sfp-black?#iefix') format('embedded-opentype'), url('../fonts/sfp-black.woff2') format('woff2'), url('../fonts/sfp-black.woff') format('woff'), url('../fonts/sfp-black.ttf') format('truetype'); font-weight: bold; font-style: normal; } */
 #loading{
-  position: absolute;
-  top: 100vh;
-  width: 100vw;
-  min-width: 300px;
-  height: 100vh;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  -ms-justify-content: center;
-  -o-justify-content: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  -o-align-items: center;
-  align-items: center;
-  background: red;
-}
-#main{
   position: absolute;
   top: 0;
   width: 100vw;
@@ -56,21 +38,176 @@ body{
   -ms-align-items: center;
   -o-align-items: center;
   align-items: center;
+  background: #000;
 }
-.frameWr{
+#main{
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  min-width: 300px;
+  height: 100vh;
+}
+.marginBrick{
+  width: 100vw;
+  min-width: 250px;
+  height: 30px;
+  background-image: url('../img/brick.png');
+  background-size: auto 100%;
+  position: absolute;
+}
+.brickTop{ top: 0; }
+.brickBott{ bottom: 0; }
+#content{
+  position: absolute;
+  top: 30px;
+  width: 100vw;
+  min-width: 250px;
+  height: calc(100vh - 60px);
+  background: #000;
+}
+#content>.interfaz{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+}
+#content>.interfaz>.column{
+  -webkit-flex-direction: column;
+-moz-flex-direction: column;
+-ms-flex-direction: column;
+-o-flex-direction: column;
+flex-direction: column;
+-webkit-justify-content: flex-end;
+-moz-justify-content: flex-end;
+-ms-justify-content: flex-end;
+-o-justify-content: flex-end;
+justify-content: flex-end;
+  height: 100%;
+}
+#content>.interfaz>.columns{ width: 15%; }
+#content>.interfaz>.columns>div{
+  width: 100%;
+  height: 30px;
+  background: #000;
+  background-image: url('../img/brick.png');
+  background-size: auto 100%;
+}
+#content>.interfaz>.marioWr{
+  width:70%;
   position: relative;
-  width: 70vw;
-  height: 70vh;
-  /* overflow: hidden; */
+}
+#content>.interfaz>.marioWr>.mario{
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  height: 30px;
+}
+#content>.interfaz>.marioWr>.mario>img{
+  height: 100%;
+}
+#content>.interfaz>.marioWr>.boxes{
+  width: 100%;
+  height: 40px;
+  -webkit-justify-content:space-around;
+-moz-justify-content:space-around;
+-ms-justify-content:space-around;
+-o-justify-content:space-around;
+justify-content:space-around;
+
+}
+#content>.interfaz>.marioWr>.boxes>li{
+  height: 35px;
+  width: 35px;
+  background-image: url('../img/box.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#content>.interfaz>.marioWr>.floorTexture{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-image:url('../img/floor.png');
+  background-size: auto 100%;
+}
+#content>.stage{
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 100px);
+  z-index: 2;
+}
+
+#content>.stage>#titulo{
+  width: 100%;
+  height: 60px;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -webkit-align-items:flex-end;
+-moz-align-items:flex-end;
+-ms-align-items:flex-end;
+-o-align-items:flex-end;
+align-items:flex-end;
+}
+#content>.stage>#titulo>img{ height: 80%; }
+#content>.stage>.capWr{
+  width: 100%;
+  height: calc(100% - 60px);
+}
+#content>.stage>.capWr>div{ height: 100%; }
+#content>.stage>.capWr>.capSide{ width: 20%; }
+#content>.stage>.capWr>.capCenter{
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+-moz-align-items: center;
+-ms-align-items: center;
+-o-align-items: center;
+align-items: center;
+  width: 60%; }
+#content>.stage>.capWr>.capCenter>.seqWr{
+  height: 80%;
+  width: 100%;
+}
+/* DESKTOP */
+@media (min-width: 880px) {
+  .marginBrick{ height: 50px; }
+  #content{ top: 50px; height: calc(100vh - 100px); }
+  #content>.stage{ height: calc(100% - 160px); }
+  #content>.interfaz{ height: 160px; }
+  #content>.interfaz>.columns>div{ height: 50px; }
+  #content>.interfaz>.marioWr>.floorTexture{ height: 50px; }
+  #content>.interfaz>.marioWr>.mario{
+    top: 60px;
+    height: 50px;
+  }
+  #content>.interfaz>.marioWr>.boxes{ height: 60px; }
+  #content>.interfaz>.marioWr>.boxes>li{
+    height: 55px;
+    width: 55px;
+  }
+  #content>.stage>#titulo{ height: 80px; }
+  #content>.stage>.capWr{ height: calc(100% - 80px); }
+}
+/* Bordes Stage */
+/*
+
+.stage{
+  border: 1px solid red;
+}
+.interfaz{
+  border: 1px solid blue;
+}
+#content>.interfaz>.marioWr{
+  border: 1px solid pink;
+}
+#content>.stage>.capWr>.capCenter{
   border:1px solid red;
 }
-.frame{
-  border:1px solid blue;
-  /* position: absolute;
-  top: 0; */
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
+
+*/

@@ -17,11 +17,12 @@ Author: MariesNavarro
     <style>
     </style>
     <link rel="stylesheet" href="css/master.css">
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="img/fav/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/fav/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="img/fav/apple-touch-icon-76x76.png" />
-    <link rel="icon" type="image/png" href="img/fav/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="img/fav/favicon-16x16.png" sizes="16x16" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/fav3/apple-touch-icon-120x120.png" />
+    <link rel="icon" type="image/png" href="img/fav3/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="img/fav3/favicon-16x16.png" sizes="16x16" />
+    <meta name="msapplication-square150x150logo" content="img/fav3/mstile-150x150.png" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
     <meta property="og:title" content="Newstalgia">
     <meta property="og:url" content="">
     <meta property="og:site_name" content="Newstalgia">
@@ -34,18 +35,56 @@ Author: MariesNavarro
     <meta name="twitter:image" content="img/social.jpg">
   </head>
   <body>
-    <div id="loading" class="flexDisplay">
-      <div id="seqDos" class="frameWr seq2" ></div>
-    </div>
+    <div id="loading" class="dislplayNone"></div>
     <div id="main" class="flexDisplay">
-      <div id="seqUno" class="seq1 frameWr"></div>
+      <div class="marginBrick brickTop"></div>
+      <div id="content">
+        <div class="stage">
+          <div id="titulo" class="flexDisplay">
+            <img src="img/tit/0.png">
+          </div>
+          <div class="capWr flexDisplay">
+            <div class="capSide"></div>
+            <div class="capCenter flexDisplay">
+              <div class="seqWr">
+                <div class="seq_1"></div>
+              </div>
+            </div>
+            <div class="capSide"></div>
+          </div>
+        </div>
+
+        <div class="interfaz flexDisplay">
+          <div class="column columns flexDisplay">
+            <div></div>
+            <div></div>
+          </div>
+          <div class="column marioWr">
+            <ul class="boxes flexDisplay">
+              <li><a href=""></a></li>
+              <li><a href=""></a></li>
+              <li><a href=""></a></li>
+              <li><a href=""></a></li>
+            </ul>
+            <div class="mario">
+              <img src="img/mario.png" alt="Mario">
+            </div>
+            <div class="floorTexture"></div>
+          </div>
+          <div class="column columns flexDisplay">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div class="marginBrick brickBott"></div>
     </div>
   <!-- <script src="js/app.js" charset="utf-8"></script> -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" type='text/javascript'></script>
 <script src='https://unpkg.com/spritespin@4.0.3/release/spritespin.js' type='text/javascript'></script>
   <script type='text/javascript'>
   $(function(){
-    $('.seq1').spritespin({
+    $('.seq_1').spritespin({
       source: SpriteSpin.sourceArray('/img/seq18/cap-{frame}.png', {
       frame: [0,17],
       digits: 1
@@ -60,23 +99,23 @@ Author: MariesNavarro
       'move'
     ]
       });
-
-
-      $('.seq2').spritespin({
-        source: SpriteSpin.sourceArray('/img/seq182/cap-{frame}.png', {
-        frame: [0,17],
-        digits: 1
-        }),
-        width: 1200,
-        height: 675,
-        sense: 1,
-        animate: false,
-        responsive: true,
-        plugins: [
-        '360',
-        'move'
-      ]
-        });
+  //
+  //
+  //     $('.seq2').spritespin({
+  //       source: SpriteSpin.sourceArray('/img/seq182/cap-{frame}.png', {
+  //       frame: [0,17],
+  //       digits: 1
+  //       }),
+  //       width: 1200,
+  //       height: 675,
+  //       sense: 1,
+  //       animate: false,
+  //       responsive: true,
+  //       plugins: [
+  //       '360',
+  //       'move'
+  //     ]
+  //       });
     });
   </script>
   </body>
