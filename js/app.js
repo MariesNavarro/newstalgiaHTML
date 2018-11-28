@@ -12,11 +12,16 @@
   */
 "use strict";
 window.console.log("%cCoded by Maries Navarro", "color:#34408f;  font-size: 10px; background:#000; padding:20px;");
+function _(el){return document.querySelector(el); }
+function __(el){return document.querySelectorAll(el); }
+var screenWidth = __('.frameWr')[0].getBoundingClientRect().width;
+var pos = ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"];
 var urlSeq1 = [], urlSeq2 = []; //arrays de secuencias declarados
 var c = 0; //contador de ReadyState
 var isMobile = false;
-function _(el){return document.querySelector(el); }
-function __(el){return document.querySelectorAll(el); }
+
+console.log(screenWidth);
+
 if(bowser.mobile || bowser.tablet || /SymbianOS/.test(window.navigator.userAgent)) isMobile = true;
 window.requestAnimFrame = (function(){
 return  window.requestAnimationFrame       ||
@@ -28,23 +33,23 @@ return  window.requestAnimationFrame       ||
 })();
 
 var init = (function(){
-  loadSeq(18, urlSeq1, "img/seq18/cap-", ".png", "#seqUno");
-  loadSeq(18, urlSeq2, "img/seq182/cap-", ".png", "#seqDos");
+  loadSeq(18, urlSeq1, "img/seq18/cap-", ".png", "#seqUno", "arr1");
+  loadSeq(18, urlSeq2, "img/seq182/cap-", ".png", "#seqDos", "arr2");
 })();
 //Generar DIVS
-function generateFrames(div, arr){
+function generateFrames(div, arr ,name){
   console.log("hola");
   var wr = _(div), frame;
   for (var i = 0; i < arr.length; i++) {
     frame = document.createElement("DIV");
-    frame.setAttribute("class", "frame");
+    frame.setAttribute("class", "frame " + name);
     frame.style.backgroundImage = "url('"+arr[i].responseURL+"')";
     wr.appendChild(frame);
   }
 }
 //Carga de imagenes
-function loadSeq(len, arr, url, ext, div){
-  console.log(div);
+function loadSeq(len, arr, url, ext, div, name){
+  console.log(name);
   for (var i = 0; i < len; i++) {
     arr[i] = new XMLHttpRequest();
     arr[i].open("GET", url+i+ext, true);
@@ -53,7 +58,7 @@ function loadSeq(len, arr, url, ext, div){
       if(this.readyState == 4){
         c++;
         if(c === len){
-          generateFrames(div, arr);
+          generateFrames(div, arr, name);
           c = 0;
         }
       }
@@ -72,7 +77,27 @@ function sliderFrames(e){
     }
   }//for
   function moveMouse(e){
-    console.log(e);
+    var arrLocal = this.getAttribute("data-array");
+    var seqDiv = parseInt(e.x/screenWidth * 18)-4;
+    var framesClass = "."+this.children[0].getAttribute('class').split(' ')[1];
+    var frames = __(framesClass);
+    if(seqDiv === -1){
+      seqDiv = 0;
+      }
+      frames[seqDiv].style.display = "none";
+
+
+    console.log(seqDiv);
   }
 };
+
+// var color = colors[parseInt(x / screenWidth * colors.length)];
+
 sliderFrames();
+
+//On Resize
+
+window.onresize = function(){
+  screenWidth = __('.frameWr')[0].getBoundingClientRect().width;
+  console.log(screenWidth);
+};
