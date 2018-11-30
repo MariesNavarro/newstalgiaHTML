@@ -61,10 +61,10 @@ Author: MariesNavarro
           </div>
           <div class="column marioWr">
             <ul class="boxes flexDisplay">
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
+              <li onclick="changeLevel('0')"><a role="button"></a></li>
+              <li onclick="changeLevel('1')"><a role="button"></a></li>
+              <li onclick="changeLevel('2')"><a role="button"></a></li>
+              <li onclick="changeLevel('3')"><a role="button"></a></li>
             </ul>
             <div class="mario">
               <img src="img/mario.png" alt="Mario">
@@ -79,44 +79,8 @@ Author: MariesNavarro
       </div>
       <div class="marginBrick brickBott"></div>
     </div>
-  <!-- <script src="js/app.js" charset="utf-8"></script> -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" type='text/javascript'></script>
-<script src='https://unpkg.com/spritespin@4.0.3/release/spritespin.js' type='text/javascript'></script>
-  <script type='text/javascript'>
-  $(function(){
-    $('.seq_1').spritespin({
-      source: SpriteSpin.sourceArray('/img/seq18/cap-{frame}.png', {
-      frame: [0,17],
-      digits: 1
-      }),
-      width: 1200,
-      height: 675,
-      sense: 1,
-      animate: false,
-      responsive: true,
-      plugins: [
-      '360',
-      'move'
-    ]
-      });
-  //
-  //
-  //     $('.seq2').spritespin({
-  //       source: SpriteSpin.sourceArray('/img/seq182/cap-{frame}.png', {
-  //       frame: [0,17],
-  //       digits: 1
-  //       }),
-  //       width: 1200,
-  //       height: 675,
-  //       sense: 1,
-  //       animate: false,
-  //       responsive: true,
-  //       plugins: [
-  //       '360',
-  //       'move'
-  //     ]
-  //       });
-    });
-  </script>
+  <script src='https://unpkg.com/spritespin@4.0.3/release/spritespin.js' type='text/javascript'></script>
+  <script src="js/app.js" charset="utf-8"></script>
   </body>
 </html>

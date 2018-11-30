@@ -188,8 +188,12 @@ align-items: center;
   }
   #content>.interfaz>.marioWr>.boxes{ height: 60px; }
   #content>.interfaz>.marioWr>.boxes>li{
+    cursor: pointer !important;
     height: 55px;
     width: 55px;
+  }
+  #content>.interfaz>.marioWr>.boxes>li:hover{
+    opacity: 0.8;
   }
   #content>.stage>#titulo{ height: 80px; }
   #content>.stage>.capWr{ height: calc(100% - 80px); }
