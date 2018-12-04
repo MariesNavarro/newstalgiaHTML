@@ -9,6 +9,12 @@ window.console.log("%cCoded by Maries Navarro", "color:#34408f;  font-size: 10px
 function _(el){return document.querySelector(el); }
 function __(el){return document.querySelectorAll(el); }
 
+var marioInit = _("#marioInit");
+var titCover = _("#titCover");
+var pipe = _("#pipe");
+var cloud1 = _("#cloud1");
+var cloud2 = _("#cloud2");
+
 var container1 = _("#canvasUno"),
     container2 = _("#canvasDos"),
     container3 = _("#canvasTres"),
@@ -215,17 +221,20 @@ function init(){
   scene4.add( mario4 );
 }
 
-
+var inc1 = 0.200;
+var inc2 = 0.200;
+var inc3 = 0.200;
+var inc4 = 0.200;
 
 function render(){
   renderer1.render(scene1, camera1);
   renderer2.render(scene2, camera2);
   renderer3.render(scene3, camera3);
   renderer4.render(scene4, camera4);
-  mario1.rotation.y += 0.005;
-  mario2.rotation.y += 0.005;
-  mario3.rotation.y += 0.005;
-  mario4.rotation.y += 0.005;
+  mario1.rotation.y += inc1;
+  mario2.rotation.y += inc2;
+  mario3.rotation.y += inc3;
+  mario4.rotation.y += inc4;
 }
 
 function animate(){
@@ -312,61 +321,83 @@ function defaultCv(){
 }
 defaultCv();
 
-
-//Tracker
-window.addEventListener("load", function(e) {
-var color = {r: 255, g: 0, b: 0};
-
-var slider = document.getElementById("tolerance");
-var canvas  = document.getElementById('canvasCam');
-var context = canvas.getContext('2d');
-var webcam = document.getElementById('webcam');
-var swatch = document.getElementById("color");
-
-var pipe = _("#pipe");
-
-
-tracking.ColorTracker.registerColor('dynamic', function(r, g, b) {
-  return getColorDistance(color, {r: r, g: g, b: b}) < slider.value
-});
-var tracker = new tracking.ColorTracker("dynamic");
-tracker.on('track', function(e) {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  if (e.data.length !== 0) {
-    e.data.forEach(function(rect) {
-      drawRect(rect, context, color);
-      if(rect.x > 500 && rect.y > 720){
-        console.log("Ya entro al tunel");
-        loadingHide();
-      }
-
-    });
-  }
-  context.drawImage(pipe, (canvas.width/2 - 50), (canvas.height-100), 100, 92);
-});
-tracking.track(webcam, tracker, { camera: true } );
-
-webcam.addEventListener("click", function (e) {
-
-  // Grab color from the video feed where the click occured
-  var c = getColorAt(webcam, e.offsetX, e.offsetY);
-
-  // Update target color
-  color.r = c.r;
-  color.g = c.g;
-  color.b = c.b;
-
-  // Update the div's background so we can see which color was selected
-  swatch.style.backgroundColor = "rgb(" + c.r + ", " + c.g + ", " + c.b + ")";
+renderer1.domElement.addEventListener("click", function(){
+  inc1 = 0;
 });
 
+renderer2.domElement.addEventListener("click", function(){
+  inc2 = 0;
 });
+
+renderer3.domElement.addEventListener("click", function(){
+  inc3 = 0;
+});
+
+renderer4.domElement.addEventListener("click", function(){
+  inc4 = 0;
+});
+
+function canvasTracker(){
+  var color = {r: 255, g: 0, b: 0};
+
+  var slider = document.getElementById("tolerance");
+  var canvas  = document.getElementById('canvasCam');
+  var context = canvas.getContext('2d');
+  var webcam = document.getElementById('webcam');
+  var swatch = document.getElementById("color");
+
+  tracking.ColorTracker.registerColor('dynamic', function(r, g, b) {
+    return getColorDistance(color, {r: r, g: g, b: b}) < slider.value
+  });
+  var tracker = new tracking.ColorTracker("dynamic");
+  tracker.on('track', function(e) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (e.data.length !== 0) {
+      e.data.forEach(function(rect) {
+        drawRect(rect, context, color);
+        if(rect.x > 500 && rect.y > 720){
+          console.log("Ya entro al tunel");
+          loadingHide();
+        }
+
+      });
+    }
+    context.drawImage(pipe, (canvas.width/2 - 50), (canvas.height-90), 100, 92);
+    context.drawImage(titCover, (canvas.width/2 - 250), (100), 500, 91);
+
+    context.drawImage(cloud1, (50), (80), 200, 98);
+    context.drawImage(cloud2, (canvas.width-250), (80), 134, 98);
+  });
+  tracking.track(webcam, tracker, { camera: true } );
+
+  webcam.addEventListener("click", function (e) {
+
+    // Grab color from the video feed where the click occured
+    var c = getColorAt(webcam, e.offsetX, e.offsetY);
+
+    // Update target color
+    color.r = c.r;
+    color.g = c.g;
+    color.b = c.b;
+
+    // Update the div's background so we can see which color was selected
+    swatch.style.backgroundColor = "rgb(" + c.r + ", " + c.g + ", " + c.b + ")";
+  });
+}
+canvasTracker();
+
+
 
 function loadingHide(){
   var wr = _("#loading");
   wr.style.opacity = "0";
   setTimeout(function(){
     wr.setAttribute("class", "dislplayNone");
+    tracking.stopUserMedia = function(){
+    if(tracking.localStream){
+      tracking.localStream.getVideoTracks()[0].stop();
+   }
+  };
   },500)
 }
 
@@ -388,7 +419,6 @@ function getColorAt(webcam, x, y) {
   return {r: pixel[0], g: pixel[1], b: pixel[2]};
 }
 
-var marioInit = _("#marioInit");
 
 function drawRect(rect, context, color) {
   context.strokeStyle = "rgb(" + color.r + ", " + color.g + ", " + color.b + ")";

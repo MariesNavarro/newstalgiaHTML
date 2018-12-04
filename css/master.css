@@ -69,6 +69,7 @@ video {display: block; }
   box-sizing: border-box;
   padding: 0 15px;
   flex-grow: 1;
+  height: 40px;
 }
 .ui #color {
   box-sizing: border-box;
