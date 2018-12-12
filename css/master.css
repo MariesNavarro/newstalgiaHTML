@@ -268,20 +268,24 @@ align-items:flex-end;
   #content>.stage>#titulo{ height: 80px; }
   #content>.stage>.capWr{ height: calc(100% - 80px); }
 }
-/* Bordes Stage */
-/*
 
-.stage{
-  border: 1px solid red;
+#objectLoading{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  opacity: 0;
 }
-.interfaz{
-  border: 1px solid blue;
+#objectLoading>img{
+  width: 40%;
 }
-#content>.interfaz>.marioWr{
-  border: 1px solid pink;
-}
-#content>.stage>.capWr>.capCenter{
-  border:1px solid red;
-}
-
-*/

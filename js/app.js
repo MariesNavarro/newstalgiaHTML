@@ -221,6 +221,8 @@ function init(){
   scene4.add( mario4 );
 }
 
+var colorIsSelected = false;
+console.log("Primer estado:"+colorIsSelected);
 var inc1 = 0.200;
 var inc2 = 0.200;
 var inc3 = 0.200;
@@ -338,7 +340,7 @@ renderer4.domElement.addEventListener("click", function(){
 });
 
 function canvasTracker(){
-  var color = {r: 255, g: 0, b: 0};
+  var color = {r: 408, g: 4, b: 6};
 
   var slider = document.getElementById("tolerance");
   var canvas  = document.getElementById('canvasCam');
@@ -353,15 +355,36 @@ function canvasTracker(){
   tracker.on('track', function(e) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     if (e.data.length !== 0) {
+      console.log(e.data.length);
       e.data.forEach(function(rect) {
         drawRect(rect, context, color);
-        if(rect.x > 500 && rect.y > 720){
-          console.log("Ya entro al tunel");
-          loadingHide();
+        if(e.data.length > 0 && colorIsSelected == true){
+          var mensaje = _("#objectLoading");
+          mensaje.setAttribute("class", "flexDisplay trans5");
+          setTimeout(function(){
+            mensaje.style.opacity = "1";
+            setTimeout(function(){
+              mensaje.style.opacity = "0";
+              loadingHide();
+              setTimeout(function(){
+                mensaje.setAttribute("class", "dislplayNone trans5");
+              },500);
+            },2000);
+          },500);
         }
+        // if(rect.x > 400 && rect.y > 720){
+          // console.log("Ya entro al tunel");
+          // loadingHide();
+        // }
 
       });
     }
+    tracking.ColorTracker.registerColor('green', function(r, g, b) {
+    if (r < 50 && g > 200 && b < 50) {
+    return true;
+    }
+    return false;
+    });
     context.drawImage(pipe, (canvas.width/2 - 50), (canvas.height-90), 100, 92);
     context.drawImage(titCover, (canvas.width/2 - 250), (100), 500, 91);
 
@@ -382,6 +405,7 @@ function canvasTracker(){
 
     // Update the div's background so we can see which color was selected
     swatch.style.backgroundColor = "rgb(" + c.r + ", " + c.g + ", " + c.b + ")";
+    // console.log("Color: "+"R:"+ c.r +" G:"+ c.g + "B: " + c.b);
   });
 }
 canvasTracker();
@@ -392,13 +416,10 @@ function loadingHide(){
   var wr = _("#loading");
   wr.style.opacity = "0";
   setTimeout(function(){
-    wr.setAttribute("class", "dislplayNone");
-    tracking.stopUserMedia = function(){
-    if(tracking.localStream){
-      tracking.localStream.getVideoTracks()[0].stop();
-   }
-  };
-  },500)
+    console.log("Quita ventana");
+    wr.style.display = "none";
+    colorIsSelected = false;
+  },500);
 }
 
 function getColorDistance(target, actual) {
@@ -418,6 +439,13 @@ function getColorAt(webcam, x, y) {
   var pixel = context.getImageData(x, y, 1, 1).data;
   return {r: pixel[0], g: pixel[1], b: pixel[2]};
 }
+var isSpace;
+window.onkeydown = function(e) {
+    e = e || window.event;
+    if(e.keyCode == 32){
+      colorIsSelected = true;
+    }
+};
 
 
 function drawRect(rect, context, color) {
